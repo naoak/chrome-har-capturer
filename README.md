@@ -27,6 +27,7 @@ For example:
       --host, -h      Remote Debugging Protocol host                  [default: "localhost"]
       --port, -p      Remote Debugging Protocol port                  [default: 9222]
       --output, -o    Dump to file instead of stdout
+      --bodies, -b    Include response bodies in HAR
       --verbose, -v   Enable verbose output on stderr                 [boolean]
       --messages, -m  Dump raw messages instead of the generated HAR  [boolean]
 

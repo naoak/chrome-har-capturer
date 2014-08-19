@@ -31,6 +31,11 @@ var argv = require('optimist')
             'alias': 'm',
             'description': 'Dump raw messages instead of the generated HAR',
             'boolean': true
+        },
+        'bodies': {
+          'alias': 'b',
+          'description': "Include response bodies in the generated HAR",
+          'boolean': true
         }
     })
     .argv;
@@ -38,7 +43,8 @@ var argv = require('optimist')
 var output = argv.output;
 var urls = argv._;
 var c = chc.load(urls, {'host': argv.host,
-                        'port': argv.port});
+                        'port': argv.port,
+                        'bodies' : typeof argv.bodies === 'undefined' ? false : !!argv.bodies });
 
 chc.setVerbose(argv.verbose);
 
