@@ -15,6 +15,8 @@ Start Chrome with options:
   interface that allows `chrome-har-capturer` to flush the DNS cache and the
   socket pool before loading each URL.
 
+- `--allow-http-screen-capture' to enable screenshot capture
+
 For example:
 
     google-chrome --remote-debugging-port=9222 --enable-benchmarking --enable-net-benchmarking
