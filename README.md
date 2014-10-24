@@ -27,9 +27,11 @@ For example:
       --host, -h      Remote Debugging Protocol host                  [default: "localhost"]
       --port, -p      Remote Debugging Protocol port                  [default: 9222]
       --output, -o    Dump to file instead of stdout
-      --bodies, -b    Include response bodies in HAR
       --verbose, -v   Enable verbose output on stderr                 [boolean]
+      --screenshot, -s  Enable taking screenshot                      [boolean]
       --messages, -m  Dump raw messages instead of the generated HAR  [boolean]
+      --bodies, -b      Include response bodies in generated HAR      [boolean]
+      --frames, -f      Output frames summary                         [boolean]
 
 This module comes with a utility that can be used to generate a cumulative HAR
 file from a list of URLs.
