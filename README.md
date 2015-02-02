@@ -30,6 +30,7 @@ For example:
       --verbose, -v   Enable verbose output on stderr                 [boolean]
       --messages, -m  Dump raw messages instead of the generated HAR  [boolean]
       --cache, -c     Enable browser cache                            [boolean]
+      --pageComment   Page comment                                    [default: ""]
 
 This module comes with a utility that can be used to generate a cumulative HAR
 file from a list of URLs.
