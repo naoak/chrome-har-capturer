@@ -36,6 +36,10 @@ var argv = require('optimist')
             'alias': 'c',
             'description': 'Enable cache',
             'boolean': true
+        },
+        'pageComment': {
+            'description': 'Page comment',
+            'default': ''
         }
     })
     .argv;
@@ -44,7 +48,8 @@ var output = argv.output;
 var urls = argv._;
 var c = chc.load(urls, {'host': argv.host,
                         'port': argv.port,
-                        'cache': argv.cache});
+                        'cache': argv.cache,
+                        'pageComment': argv.pageComment});
 
 chc.setVerbose(argv.verbose);
 
