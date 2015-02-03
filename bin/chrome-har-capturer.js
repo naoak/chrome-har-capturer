@@ -27,9 +27,24 @@ var argv = require('optimist')
             'description': 'Enable verbose output on stderr',
             'boolean': true
         },
+        'screenshot': {
+            'alias': 's',
+            'description': 'Enable taking screenshot',
+            'boolean': true
+        },
         'messages': {
             'alias': 'm',
             'description': 'Dump raw messages instead of the generated HAR',
+            'boolean': true
+        },
+        'bodies': {
+            'alias': 'b',
+            'description': 'Include response bodies in generated HAR',
+            'boolean': true
+        },
+        'frames': {
+            'alias': 'f',
+            'description': 'Output frames summary',
             'boolean': true
         }
     })
@@ -38,7 +53,11 @@ var argv = require('optimist')
 var output = argv.output;
 var urls = argv._;
 var c = chc.load(urls, {'host': argv.host,
-                        'port': argv.port});
+                        'port': argv.port,
+                        'screenshot': argv.screenshot,
+                        'verbose': argv.verbose,
+                        'bodies': argv.bodies,
+                        'frames': argv.frames});
 
 chc.setVerbose(argv.verbose);
 
@@ -52,13 +71,17 @@ c.on('pageError', function(url) {
     if (process.stdout.isTTY) status = status.red;
     console.error(status + ' ' + url);
 });
-c.on('end', function(har, messages) {
+c.on('end', function(har, messages, screenshot) {
     var object = argv.messages ? messages : har;
     var json = JSON.stringify(object, null, 4);
     if (argv.output) {
         fs.writeFileSync(output, json);
     } else {
         console.log(json);
+    }
+    if(argv.screenshot && screenshot) {
+        var imageBuffer = new Buffer(screenshot, 'base64');
+        fs.writeFile('screenshot.png', imageBuffer);
     }
 });
 c.on('error', function() {

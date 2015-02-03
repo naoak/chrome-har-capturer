@@ -15,6 +15,8 @@ Start Chrome with options:
   interface that allows `chrome-har-capturer` to flush the DNS cache and the
   socket pool before loading each URL.
 
+- `--allow-http-screen-capture' to enable screenshot capture
+
 For example:
 
     google-chrome --remote-debugging-port=9222 --enable-benchmarking --enable-net-benchmarking
@@ -28,7 +30,10 @@ For example:
       --port, -p      Remote Debugging Protocol port                  [default: 9222]
       --output, -o    Dump to file instead of stdout
       --verbose, -v   Enable verbose output on stderr                 [boolean]
+      --screenshot, -s  Enable taking screenshot                      [boolean]
       --messages, -m  Dump raw messages instead of the generated HAR  [boolean]
+      --bodies, -b      Include response bodies in generated HAR      [boolean]
+      --frames, -f      Output frames summary                         [boolean]
 
 This module comes with a utility that can be used to generate a cumulative HAR
 file from a list of URLs.
